@@ -46,6 +46,7 @@ casa_peque = datos.iloc[id_peque]
 print("La casa más pequeña tiene una superficie de :", casa_peque["surface"])
 print("y esta ubicada en: ", casa_peque["address"])
 
+#Ejercicio 4
 # Cantidad de poblaciones level 5
 
 print("Ejercicio 4")
@@ -53,6 +54,21 @@ print("Ejercicio 4")
 level_5 = datos["level5"].unique().size
 
 print("la cantidad de población level 5:", level_5)
+
+#Ejercicio 5 
+# valores no admitidos (NAs) identificación 
+
+datos["Tiene_NA"] = datos.isna().any(axis=1)
+
+# Guardar los datos modificados 
+
+datos.to_csv('assets/datos_modificados.csv')
+
+
+
+
+
+
 
 
 

@@ -57,21 +57,34 @@ print("la cantidad de población level 5:", level_5)
 
 #Ejercicio 5 
 # valores no admitidos (NAs) identificación 
-print("cantidad de registros antes de la limpieza", datos.count())
+
+print("cantidad de registros antes de la limpieza", datos["realEstate_name"].count())
 
 datos["Tiene_NA"] = datos.isna().any(axis=1)
+
+
+limpieza = datos["Tiene_NA"].sum()
+print("Cantidad de datos despues de la limpieza ", limpieza)
+
 
 # Guardar los datos
 
 datos.to_csv('assets/datos_modificados.csv')
 
 datos = pd.read_csv ('assets/datos_modificados.csv')
-print("cantidad de registros despues de la limpieza", datos.count())
 
 # Ejercicio 6 
 # Eliminar todos los que tienen NA 
 
-print()
+datos = datos[datos["Tiene_NA"] == False]
+
+datos.to_csv('assets/datos_modificados.csv')
+
+datos = pd.read_csv ('assets/datos_modificados.csv')
+
+
+
+
 
 
 

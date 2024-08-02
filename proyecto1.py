@@ -2,6 +2,8 @@ import numpy as np
 
 import pandas as pd
 
+import matplotlib as plt
+
 datos = pd.read_csv('assets/real_estate.csv', sep=';')
 
 # Ejercicio 1
@@ -76,12 +78,36 @@ datos = pd.read_csv ('assets/datos_modificados.csv')
 # Ejercicio 6 
 # Eliminar todos los que tienen NA 
 
-datos = datos[datos["Tiene_NA"] == False]
+#datos = datos[datos["Tiene_NA"] == False]
 
-datos.to_csv('assets/datos_modificados.csv')
 
-datos = pd.read_csv ('assets/datos_modificados.csv')
+"""datos.to_csv('assets/datos_modificados.csv')
 
+datos = pd.read_csv ('assets/datos_modificados.csv')"""
+
+# Ejercicio 7
+# Media de precios en la poblacion "Arroyomolinos (Madrid)"
+
+print("Ejercicio 7")
+
+poblacion_arroyomo = datos[datos["level5"] == "Arroyomolinos (Madrid)"]
+
+media_a = poblacion_arroyomo["price"].mean()
+
+print("La media de precios de la población Arroyomolinos (Madrid) es de : {:.2f} ".format(media_a))
+
+# Ejercicio 8
+
+
+plt.figure(figsize = (100000, 5))
+
+plt.hist( poblacion_arroyomo["price"], bins = 30, alpha = 0.7)
+
+plt.title("Histograma de precios en Arroyomolinos (Madrid)")
+plt.show()
+
+
+print("Ejercicio 8")
 
 
 
